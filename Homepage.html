@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JetX Easty Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cursive', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #001f3f, #0074D9);
+            color: white;
+            overflow-x: hidden;
+        }
+        nav {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            border: 2px solid blue;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            position: fixed; /* Fixed position */
+            width: 100%;
+            top: 0; /* Stick to the top */
+            z-index: 1000; /* Ensure it stays above other elements */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .side-panel {
+            width: 12.5%;
+            float: left;
+            background: linear-gradient(to right, #2a5298, #1e3c72); /* Gradient background */
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 60px; /* Space below the fixed nav */
+        }
+        .side-panel h2 {
+            color: white;
+        }
+        .side-panel button {
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .side-panel button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .side-panel i {
+            margin-right: 10px; /* Space between icon and text */
+        }
+        .content {
+            margin-left: 13%;
+            padding: 20px;
+            margin-top: 60px; /* Space below the fixed nav */
+        }
+        .collapsible {
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: left;
+            width: 100%;
+        }
+        .collapsible-content {
+            display: none;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .footer {
+            background: slategray;
+            text-align: center;
+            padding: 20px;
+        }
+        .footer img {
+            width: 100px;
+            margin: 20px;
+        }
+        .rounded-border {
+            border: 2px solid green;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-box {
+            border: 2px solid white;
+            border-radius: 0;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .contact-box i {
+            margin-right: 10px;
+            color: #FFD700; /* Gold color for icons */
+        }
+        .contact-details {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .invest-now {
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .image-slider {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .image-slider img {
+            width: 280px;
+            height: auto;
+            border-radius: 5px;
+            transition: opacity 1s ease-in-out;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+            opacity: 0; /* Start hidden for animation */
+            animation: flyIn 0.5s ease forwards; /* Fly-in animation */
+        }
+        @keyframes flyIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        tr:nth-child(odd) {
+            background-color: #4CAF50; /* Green */
+        }
+        tr:nth-child(even) {
+            background-color: #2196F3; /* Blue */
+        }
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Lighter on hover */
+            transform: scale(1.05); /* Increase size on hover */
+        }
+        /* WhatsApp button styling */
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 40px; /* Increased size */
+            color: darkgreen; /* Darker shade of green */
+            animation: pulse 10s infinite; /* Continuous size animation */
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Slightly larger */
+            }
+        }
+        /* Social Media Links */
+        .social-links {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .social-links a {
+            font-size: 70px; /* Size of the icons */
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-family: cursive; /* Cursive font */
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .side-panel {
+                width: 100%;
+                float: none;
+            }
+            .content {
+                margin-left: 0;
+            }
+            nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home"><i class="fas fa-home"></i> Home</a>
+        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="mailto:info@jetxeastafrica.rf.gd"><i class="fas fa-envelope"></i> Email Us</a>
+        <a href="#investment-plans"><i class="fas fa-chart-line"></i> Investment Plans</a>
+        <a href="#partner-companies"><i class="fas fa-building"></i> Partner Companies</a>
+        <a href="#contact-us"><i class="fas fa-address-book"></i> Contact Us</a>
+    </nav>
+
+    <div class="side-panel">
+        <h2>Investment Options</h2>
+        <button class="collapsible"><i class="fas fa-coins"></i> Crypto Assets</button>
+        <div class="collapsible-content">
+            <ul>
+                <li>Crypto Holdings</li>
+                <li>Crypto Mining</li>
+                <li>Crypto Staking</li>
+                <li>Web3</li>
+            </ul>
+        </div>
+        <hr>
+        <button class="collapsible"><i class="fas fa-university"></i> Treasury Bonds</button>
+        <div class="collapsible-content">
+            <ul>
+                <li>Government of Kenya</li>
+                <li>Government of Rwanda</li>
+                <li>Government of Tanzania</li>
+                <li>Government of Uganda</li>
+            </ul>
+        </div>
+        <hr>
+        <button class="collapsible"><i class="fas fa-chart-bar"></i> Stocks</button>
+        <div class="collapsible-content">
+            <ul>
+                <li>Safaricom</li>
+                <li>EABL</li>
+                <li>DCB Commercial Bank</li>
+                <li>MTN Uganda</li>
+                <li>Brailiwa</li>
+            </ul>
+        </div>
+        <hr>
+        <button class="collapsible"><i class="fas fa-dollar-sign"></i> Forex</button>
+        <div class="collapsible-content">
+            <ul>
+                <li>XM</li>
+                <li>MyFXTM</li>
+                <li>Pepperstone</li>
+                <li>Deriv</li>
+            </ul>
+        </div>
+        <hr>
+        <button class="collapsible"><i class="fas fa-home"></i> Real Estate</button>
+        <div class="collapsible-content">
+            <ul>
+                <li>Vaal</li>
+                <li>MiVida</li>
+                <li>Knight Frank African Property Investment</li>
+                <li>Villa Care Kenya</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <section id="home">
+            <h1 class="fade-in">HOME</h1>
+            <hr>
+            <h1 class="fade-in">Welcome JetX East Africa</h1>
+            <p class="rounded-border fade-in">Explore our investment plans, partner companies, and more.</p>
+            <h1>Introduction</h1>
+            <p style="font-family:cursive">Located in the bustling city of Nairobi, JetX East Africa is committed to fostering economic growth and prosperity across East Africa and beyond. With operations extending to Rwanda, Uganda, Tanzania, Kenya, and South Africa, we are strategically positioned to tap into the region’s vast potential.</p>
+            <h1>About</h1>
+            <p style="font-family: cursive;">At JetX East Africa, we take pride in our diverse investment portfolio. Our shareholding in some of the region’s largest and most influential companies ensures that we play a crucial role in their growth and success. We also engage in trading stocks and treasury bonds, offering our clients secure and profitable investment opportunities.</p>
+            <p style="font-family: cursive;">Our expertise in Forex trading allows us to leverage market insights to maximize returns. Additionally, we are pioneers in the cryptocurrency space, actively participating in mining activities that are set to revolutionize the financial landscape. Our holdings are carefully diversified to minimize risk and enhance growth.
+
+                Real estate is another key pillar of our investment strategy. We invest in prime properties across the region, contributing to urban development and providing our clients with lucrative opportunities in the real estate market.
+                
+                Join us on this exciting journey as we continue to build a prosperous future for East Africa. Together, we can achieve remarkable success and create lasting impact.</p>
+            <h2 class="fade-in">PARTNER COMPANIES</h2>
+            <hr>
+            <ul class="fade-in">
+                <li>EABL</li><br>
+                <li>DCB Commercial Bank</li><br>
+                <li>MTN Uganda</li><br>
+                <li>Vaal</li><br>
+                <li>MiVida</li><br>
+                <li>Bralirwa</li><br>
+                <li>DCB Commercial Bank</li><br>
+                <li>Knight Frank African Property Investment</li><br>
+                <li>Villa Care Kenya</li><br>
+                <li>Safaricom PLC</li>
+            </ul>
+            <br> <br>
+            <div class="image-slider">
+                <div>
+                <img src="https://i.postimg.cc/6qby8xFW/download.png" alt="MTN" width="500" height="300">
+                </div>
+                <div>
+                <img src="https://i.postimg.cc/sXcBRhcZ/download-1.jpg" alt="DCM Bank" width="500" height="300">
+                </div>
+                <div>
+                    <img src="https://i.postimg.cc/C5xRMxPr/download-2.jpg" alt="Bralirwa" width="500" height="300">
+                </div>
+                <div>
+                    <img src="https://i.postimg.cc/fW832YyG/download-1.png" alt="eabl" width="500" height="300">
+                </div>
+            </div>
+        </section>
+        <br>
+        <br>
+
+        <section id="about">
+            <h1 class="fade-in">ABOUT US</h1>
+            <hr>
+            <h2>ESTABLISHMENT</h2>
+            <p class="fade-in" style="font-family: cursive;">JetX East Africa, inspired by a vision to drive regional growth, was endorsed by Boresha SACCO LTD and began operations in March 2021. Covered by APA Insurance, the company aims to revolutionize investment opportunities across East Africa, ensuring security and prosperity for its clients..</p>
+            <h2>GROWTH</h2>
+            <p class="fade-in" style="font-family: cursive;">JetX East Africa, launched in March 2021 with the endorsement of Boresha SACCO LTD, has rapidly expanded its footprint across East Africa. Initially focusing on shareholding and treasury bonds, the company soon diversified into Forex trading, cryptocurrency mining, and real estate. Covered by APA Insurance, JetX East Africa has become a key player in the region’s investment landscape, driving growth and innovation.
+                Since our inception, we have experienced significant growth, expanding our portfolio and client base.</p>
+            <h2>GIVING BACK TO THE CUSTOMERS AND THE E.A COMMUNITY</h2>
+            <p class="fade-in" style="font-family: cursive;">JetX East Africa is committed to giving back to its customers and the East African community through various impactful projects. The company has launched educational scholarships, providing opportunities for underprivileged students to pursue higher education. Additionally, JetX East Africa supports local entrepreneurs with seed funding and mentorship programs, fostering innovation and economic growth. The company also invests in community health initiatives, improving access to medical services in underserved areas. Environmental sustainability is another focus, with projects aimed at reforestation and clean energy. These initiatives reflect JetX East Africa’s dedication to creating a positive and lasting impact in the region. We have undertaken various projects in real estate, technology, and finance.</p>
+            <h2>MISSION</h2>
+            <p class="fade-in">Our mission is to empower individuals and businesses to achieve their financial goals through smart investments. JetX East Africa is dedicated to transforming the investment landscape through strategic diversification, cutting-edge financial solutions, and community-focused initiatives.</p>
+            <h2>VISION</h2>
+            <p class="fade-in" style="font-family: cursive;">To be the leading investment company in East Africa, driving sustainable growth and innovation while empowering communities and creating lasting value for our stakeholders. We envision a world where everyone has access to the tools and resources needed for financial success.</p>
+            <h2>SERVICES</h2>
+            <p class="fade-in">We offer a range of services including;<br><br>Property Management <br><br> Investment<br> <br>consulting <br> <br>portfolio management<br> <br>financial planning.</p>
+        </section>
+        <hr>
+
+        <section id="investment-plans">
+            <h1 class="fade-in">INVESTMENT PLANS</h1>
+            
+            <p class="rounded-border fade-in" style="font-family: cursive;">JetX East Africa offers a range of investment plans tailored to meet diverse financial goals and timelines. Our short-term plan provides a 25% return on investment (ROI) within just 24 hours, ideal for investors seeking quick gains and immediate liquidity. This plan is perfect for those looking to capitalize on short-term market opportunities.
+
+                For those with a slightly longer investment horizon, our bi-weekly plan offers a 50% ROI over a two-week period. This plan balances higher returns with a manageable investment duration, making it suitable for investors who prefer a medium-term commitment.
+                
+                Our quarterly plan is designed for investors aiming for substantial growth over a three-month period, offering an impressive 70% ROI. This plan is ideal for those who can commit their funds for a longer duration to achieve significant returns.
+                
+                Each of these plans is crafted to maximize returns while catering to different investment preferences and risk appetites, ensuring that our clients can find the perfect fit for their financial goals.</p>
+            <table class="table">
+                <tr>
+                    <th colspan="2">INVESTMENT AMOUNT</th>
+                    <th>NET RETURNS</th>
+                    <th>RETURN ON INVESTMENTS(ROI)</th>
+                </tr>
+                <tr>
+                    <td colspan="4">SHORT-TERM(24Hrs)</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES. 25000</td>
+                    <td>KES.30,000</td>
+                    <td>KES. 5,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.50,000</td>
+                    <td>KES. 62,500</td>
+                    <td>KES. 12,500</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES. 70,000</td>
+                    <td>KES.87,500 </td>
+                    <td>KES. 17,500</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES. 90,000</td>
+                    <td>KES. 112,500</td>
+                    <td>KES. 22,500</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.100,000</td>
+                    <td>KES. 125,000</td>
+                    <td>KES. 25,000</td>
+                </tr>    
+                <tr>
+                    <td colspan="4">BI-WEEKLY PLAN</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.5,000</td>
+                    <td>KES.7,500</td>
+                    <td>KES. 2,500 </td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.7,000</td>
+                    <td>KES.10,500</td>
+                    <td>KES. 3,500 </td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.9,000</td>
+                    <td>KES.13,500</td>
+                    <td>KES. 4,500 </td>
+                </tr>        
+                <tr>
+                    <td>-</td>
+                    <td>KES.10,000</td>
+                    <td>KES.15,500</td>
+                    <td>KES. 5,500 </td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.12,000</td>
+                    <td>KES.18,000</td>
+                    <td>KES. 6,000 </td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.15,000</td>
+                    <td>KES.22,500</td>
+                    <td>KES. 7,500 </td>
+                </tr>
+                <tr>
+                    <td colspan="4">QUARTELY(3 MONTHS)</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.5,000</td>
+                    <td>KES.10,000</td>
+                    <td>KES.5,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.8,000</td>
+                    <td>KES.16,000</td>
+                    <td>KES.8,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.10,000</td>
+                    <td>KES.20,600</td>
+                    <td>KES.10,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.12,000</td>
+                    <td>KES.24,000</td>
+                    <td>KES.12,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.15,000</td>
+                    <td>KES.30,000</td>
+                    <td>KES.15,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.20,000</td>
+                    <td>KES.40,000</td>
+                    <td>KES.20,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.25,000</td>
+                    <td>KES.50,000</td>
+                    <td>KES.25,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.30,000</td>
+                    <td>KES.60,000</td>
+                    <td>KES.30,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.40,000</td>
+                    <td>KES.80,000</td>
+                    <td>KES.40,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.50,000</td>
+                    <td>KES.100,000</td>
+                    <td>KES.50,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.80,000</td>
+                    <td>KES.160,000</td>
+                    <td>KES.80,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.100,000</td>
+                    <td>KES.200,000</td>
+                    <td>KES.100,000</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>KES.150,000</td>
+                    <td>KES.300,000</td>
+                    <td>KES.150,000</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <div class="image-slider">
+                <a href="https://www.checkout.com/" title="Invest Now">
+                <img src="https://i.postimg.cc/MT767jMR/images-1.jpg" alt="Crypto Mining-Nyahururu Firm" width="500px" height="400px">
+                </a>
+                <a href="https://www.checkout.com/" title="Invest Now">
+                <img src="https://i.postimg.cc/SKzNKPmg/mining2.jpg" alt="South Africa Mining Firm">
+                </a>
+                <a href="https://www.checkout.com/" title="Invest Now">
+                <img src="https://i.postimg.cc/Z5n5GR2t/stocks1.jpg" alt="Stock Market">
+                </a>
+                <a href="https://www.checkout.com/" title="Invest Now">
+                <img src="https://i.postimg.cc/W1b2qyTC/images-1.jpg" alt="Real Estate">
+                </a>
+                <a href="https://www.checkout.com/" title="Invest Now">
+                <img src="https://i.postimg.cc/KjmZJvBW/Kenyan-Stock-Market.jpg" alt="Treasury Bonds">
+                </a>
+                <img src="https://i.postimg.cc/xTtdpHs3/stocks2.jpg" alt="Forex Trade">
+            </div>
+            <div class="fade-in">
+                <button class="invest-now" onclick="window.open('https://checkout.com', '_blank')">Invest Now</button>
+            </div>
+        </section>
+
+        <section id="partner-companies" style="font-family: cursive;">
+            <h1 class="fade-in">PARTNER COMPANIES</h1>
+            <hr>
+            <br>
+            <p class="rounded-border fade-in">JetX East Africa has established strategic partnerships with several leading companies, enhancing its investment portfolio and market presence. We collaborate with various companies to provide the best services.</p>
+            <h2>Safaricom</h2>
+            <p> JetX East Africa’s partnership with Safaricom leverages the telecom giant’s extensive network and technological expertise. This collaboration facilitates innovative financial solutions and enhances connectivity, driving growth and efficiency in the investment sector. We work with Safaricom to offer mobile payment solutions for our clients.</p>
+            <h2>EABL</h2>
+            <p>By partnering with EABL, JetX East Africa invests in one of the region’s most prominent beverage companies. This partnership not only boosts the company’s portfolio but also supports local industries and economic growth. Our collaboration with EABL allows us to invest in the beverage industry.</p>
+            <h2>DCB Commercial Bank</h2>
+            <p>Through its partnership with DCB Bank Tanzania, JetX East Africa expands its financial services footprint. This alliance facilitates access to local markets and enhances the company’s ability to support regional economic development. We partner with DCB to provide financial services and loans to our clients.</p>
+            <h2>MTN Uganda</h2>
+            <p>The collaboration with MTN Uganda allows JetX East Africa to tap into the telecommunications market, benefiting from MTN’s vast customer base and market insights. This partnership drives innovation and expands the company’s reach in the region. Our partnership with MTN Uganda enables us to offer mobile banking services.</p>
+            <h2>Vaal</h2>
+            <p> JetX East Africa collaborates with Vaal Real Estate to invest in prime properties across the region. This partnership enhances the company’s real estate portfolio and supports sustainable urban development. We collaborate with Vaal for real estate investment opportunities.</p>
+            <h2>MiVida</h2>
+            <p>The partnership with Mi Vida focuses on real estate investments, contributing to urban development and providing lucrative opportunities in the property market. This alliance supports JetX East Africa’s strategic goals in the real estate sector. Our partnership with MiVida focuses on sustainable housing projects.</p>
+            <h2>APA Insurance</h2>
+            <p>JetX East Africa collaborates with APA Insurance to provide comprehensive coverage for its investments and operations. This partnership ensures that all financial activities are safeguarded against potential risks, offering peace of mind to investors and stakeholders.</p>
+            <h2>XRP</h2>
+            <p>JetX East Africa’s collaboration with XRP involves investing in cryptocurrency, exploring innovative financial technologies. This partnership positions the company at the forefront of the digital finance revolution, offering new opportunities for growth.</p>
+            <h2>Bralirwa</h2>
+            <p>By partnering with Bralirwa, JetX East Africa invests in the beverage industry, supporting local production and economic growth. This collaboration strengthens the company’s portfolio and market presence.</p>
+            <h2>Stock Exchange</h2>
+            <p>The Uganda Securities Exchange (USE), Rwanda Stock Exchange (RSE), Dar es Salaam Stock Exchange (DSE), and Nairobi Securities Exchange (NSE) are key financial markets in East Africa. These exchanges rank companies based on market capitalization, trading volume, and financial performance. JetX East Africa evaluates these metrics annually to identify top-performing stocks. By analyzing financial reports, market trends, and economic indicators, JetX selects stocks with the highest growth potential and stability. This strategic approach ensures optimal returns for investors while supporting regional economic development.</p>
+            <button class="invest-now" onclick="window.open('https://www.african-markets.com/en/stock-markets/use', '_blank')">Ugandan Securities Exchange</button>
+            <button class="invest-now" onclick="window.open('https://www.rse.rw/', '_blank')">Rwanda Stock Exchange</button>
+            <button class="invest-now" onclick="window.open('https://dse.co.tz/', '_blank')"> Dar-Es-Salaam Stock Exchange</button>
+            <button class="invest-now" onclick="window.open('https://www.nse.co.ke/market-statistics-summary/', '_blank')">Nairobi Securities Exchange</button>
+            <h3>How Do We Analyze Stock Performance</h3> <br>
+            <p>
+                JetX East Africa employs a comprehensive approach to analyze stock performance, ensuring informed investment decisions. Here are the key steps involved:<br><br>
+
+                1. <mark>Financial Analysis:</mark><br> The company reviews financial statements, including income statements, balance sheets, and cash flow statements, to assess a company's profitability, liquidity, and overall financial health.<br><br>
+                
+                2. <mark>Market Trends:</mark><br> JetX monitors market trends and economic indicators to understand the broader economic environment and its impact on stock performance.<br><br>
+                
+                3. <mark>Technical Analysis:</mark><br> This involves studying historical price movements and trading volumes using charts and statistical tools to predict future price trends.<br><br>
+                
+                4. <mark>Analysis:</mark> <br>JetX evaluates a company's intrinsic value by examining factors such as earnings, revenue growth, industry position, and management quality.<br><br>
+                
+                5. <mark>Risk Assessment:</mark><br> The company assesses potential risks, including market volatility, political stability, and sector-specific challenges, to ensure a balanced investment portfolio.<br><br>
+                
+                6. <mark>Peer Comparison:</mark><br> JetX compares the performance of companies within the same industry to identify the best-performing stocks.<br><br>
+                
+                By integrating these methods, JetX East Africa selects stocks with the highest growth potential and stability, optimizing returns for its investors.<br><br><br>
+            </p>
+        </section>
+        <br>
+
+        <section id="contact-us" class="contact-section">
+            <h1 class="fade-in">CONTACT US</h1>
+            <div class="contact-details">
+                <div class="contact-box fade-in">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Cape+Town" target="_blank">Cape Town</a><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Gazaland,+Kampala" target="_blank"> Gazaland, Kampala</a><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Dodoma+shoppers+Mall" target="_blank">Dodoma, Tanzania</a><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Kigali,+Rwanda" target="_blank">Kigali, Rwanda</a><br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Prism+Towers, +Nairobi+city" target="_blank">Nairobi Office</a><br>
+                </p>
+                </div>
+                <div class="contact-box fade-in">
+                    <i class="fas fa-phone"></i>
+                    <p>Admin: +27 25673188, Customer Care: +254 762082468</p>
+                </div>
+                <div class="contact-box fade-in">
+                    <i class="fas fa-envelope"></i>
+                    <p>Email: 
+                    <a href="mailto:info@jetxeastafrica.rf.gd">Inquiries</a><br>
+                    <a href="mailto:customercare@jetxeastafrica.rf.gd"> Customer Care</a><br>
+                    <a href="mailto:admin@jetxeastafrica.rf.gd">Admin</a><br>
+                    <a href="mailto:complaints@jetxeastafrica.rf.gd">Complaints</a><br>
+                </p>
+                </div>
+                <div class="contact-box fade-in">
+                    <i class="fab fa-whatsapp"></i>
+                    <p><a href="https://wa.me/254762082468" target="_blank">WhatsApp Us</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61565776516059" target="_blank">
+                <i class="fab fa-facebook"></i> JetX East Africa
+            </a>
+            <a href="https://www.tiktok.com/@jetx_investors.co?_t=8q4Kd8VxmlC&_r=1" target="_blank">
+                <i class="fab fa-tiktok"></i> JetX East Africa
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>Below are Some of Our Partners</h2>
+        <img src="https://i.postimg.cc/6qby8xFW/download.png" alt="MTN">
+        <img src="https://i.postimg.cc/sXcBRhcZ/download-1.jpg" alt="DCB COMMERCIAL BANK">
+        <img src="https://i.postimg.cc/fW832YyG/download-1.png" alt="EABL">
+        <img src="https://i.postimg.cc/C5xRMxPr/download-2.jpg" alt="BRALIRWA"><br>
+        <img src="https://i.postimg.cc/zXMy55np/saf2.png" alt="SAFARICOM PLC">
+        <img src="https://i.postimg.cc/G28M7v1d/download-2.png" alt="XRP">
+        <img src="https://i.postimg.cc/Hxq6fjp5/dse.jpg" alt="DAR-ES-SALAM SECURITIES EXCHANGE"><br>
+        <img src="https://i.postimg.cc/vT50MMBK/mivida.png" alt="MI-VIDA">
+        <img src="https://i.postimg.cc/h4myV8r0/NSE.jpg" alt="NAIROBI SECURITIES EXCHANGE">
+        <img src="https://i.postimg.cc/VNNZt3GS/usex.png" alt="UGANDA SECURITIES EXCHANGE">
+    </div>
+
+    <a href="https://wa.me/254762082468" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const content = button.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Image slider functionality
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.image-slider div');
+        setInterval(() => {
+            images[currentIndex].style.opacity = 0;
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].style.opacity = 1;
+        }, 3000);
+
+        // Ensure mailto links open in the default mail client
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = link.href;
+            });
+        });
+
+        // Animate table cells
+        const tableCells = document.querySelectorAll('td, th');
+        tableCells.forEach((cell, index) => {
+            cell.style.animationDelay = `${index * 0.1}s`; // Stagger the animation
+            cell.style.opacity = 1; // Make cells visible after animation
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
